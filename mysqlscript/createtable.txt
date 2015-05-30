@@ -1,0 +1,9 @@
+CREATE TABLE mylog
+( 
+  id int(11) NOT NULL AUTO_INCREMENT,
+  title varchar(255),
+  tag varchar(255),
+  content text,
+  date datetime,
+  PRIMARY KEY (id)
+) DEFAULT CHARSET=utf8 ;
