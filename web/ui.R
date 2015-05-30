@@ -1,3 +1,4 @@
+library(ggplot2)
 shinyUI(fluidPage(
   
   sidebarLayout(
@@ -13,8 +14,8 @@ shinyUI(fluidPage(
     ),
     mainPanel(
       tabsetPanel(
-        tabPanel("文章列表", textOutput("text1")),
-        tabPanel("总结", verbatimTextOutput("summary")),
+        tabPanel("文章列表",tableOutput(outputId="title")),
+        tabPanel("总结", helpText('总结')),
         tabPanel("统计分析", tableOutput("table"))
       )
     )
