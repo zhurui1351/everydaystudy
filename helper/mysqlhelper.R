@@ -19,9 +19,8 @@ getLog <- function()
   conn <- dbConnect(MySQL(), dbname = "everydaystudy", username="zhurui", password="123456",host="127.0.0.1",port=3306)
   #strange here because encoding in database is utf8
   dbSendQuery(conn,'SET NAMES GBK')
-  sql = 'select date as 添加日期,title as 标题 from mylog'
+  sql = 'select  date,title  from mylog order by date desc'
   rs = dbGetQuery(conn,sql)
-  print(rs)
   dbDisconnect(conn)
   return(rs)
   
