@@ -1,5 +1,7 @@
 require('shiny')
 require('stringr')
+require('DT')
+
 sourceDir <- function(path, trace = TRUE, ...) {
   for (nm in list.files(path, pattern = "[.][RrSsQq]$")) {
     if(trace) cat(nm,":")
