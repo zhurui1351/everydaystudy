@@ -6,4 +6,4 @@ CREATE TABLE mylog
   content text,
   date datetime,
   PRIMARY KEY (id)
-) DEFAULT CHARSET=utf8 ;
+) DEFAULT CHARSET= UTF8;
