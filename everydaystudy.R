@@ -1,7 +1,6 @@
 require('shiny')
 require('stringr')
 require('DT')
-options(shiny.trace=F)
 sourceDir <- function(path, trace = TRUE, ...) {
   for (nm in list.files(path, pattern = "[.][RrSsQq]$")) {
     if(trace) cat(nm,":")
@@ -14,7 +13,4 @@ setwd("C:/R/code/everydaystudy")
 sourceDir("helper")
 runApp("web")
 setwd(currentwd)
-
-
-
 

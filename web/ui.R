@@ -20,8 +20,9 @@ shinyUI(fluidPage(
     mainPanel(
       tabsetPanel(
         tabPanel("知识列表",DT::dataTableOutput("titlelist"), tags$textarea(id="selected", rows=10,cols=80,textOutput("selectedcontent")),
+                 br(),
                  actionButton("update", "更新"),
-                 actionButton("delete", "删除")
+                 actionButton("delete", "删除"),actionButton("review", "复习")
         ),
         tabPanel("复习",  tags$textarea(id="selected", rows=10,cols=80,textOutput("selectedcontent"))),
         tabPanel("统计分析", textOutput("selectedcontent"))

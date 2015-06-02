@@ -16,14 +16,16 @@ shinyServer(function(input, output,session) {
   #     data
   #   })
   output$titlelist = DT::renderDataTable({   
-    datatable(var$mydata[,2:4], options = list(
-      pageLength = 7,searching=FALSE),selection = c("single"))
+    datatable(var$mydata[,2:5], options = list(
+      pageLength = 7,searching=FALSE),
+      selection = c("single"), colnames=c('日期','标题','标签','复习次数')
+      )
   })
   
   observe({
     data = var$mydata
     s=input$titlelist_rows_selected
-    updateTextInput(session,"selected",value=data[s,5])
+    updateTextInput(session,"selected",value=data[s,'content'])
   })
   observeEvent(input$goButton, {
     if(isolate(input$content) != "")
@@ -39,7 +41,8 @@ shinyServer(function(input, output,session) {
     f = switch(input$select, 
                "1"= getSearchByTitle,
                "2" = getSearchByTag,
-               "3" = getSearchByContent)
+               "3" = getSearchByContent,
+               "4" = getUnreviewd)
     keyword = isolate(input$keyword) 
     data = f(keyword)
     var$flag = 2
@@ -67,6 +70,16 @@ shinyServer(function(input, output,session) {
     if(var$flag == 2)
       var$mydata = var$search(isolate(input$keyword))
     
+  })
+  
+  observeEvent(input$review, {    
+    s=isolate(input$titlelist_rows_selected)
+    id = var$mydata[s,1]
+    reviewByid(id);
+    if(var$flag == 1)
+      var$mydata = getLog()
+    if(var$flag == 2)
+      var$mydata = var$search(isolate(input$keyword))
   })
   
 })

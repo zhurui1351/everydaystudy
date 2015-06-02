@@ -19,12 +19,12 @@ getLog <- function()
   conn <- dbConnect(MySQL(), dbname = "everydaystudy", username="zhurui", password="123456",host="127.0.0.1",port=3306)
   #strange here because encoding in database is utf8
   dbSendQuery(conn,'SET NAMES utf8')
-  sql = 'select id, date,title,tag,content  from mylog order by date desc'
+  sql = 'select id, date,title,tag,count,content  from mylog order by date desc'
   data = dbGetQuery(conn,sql)
   dbDisconnect(conn)
   data[,3] = iconv(data[,3],from='UTF-8',to='GBK')
   data[,4] = iconv(data[,4],from='UTF-8',to='GBK')
-  data[,5] = iconv(data[,5],from='UTF-8',to='GBK')
+  data[,6] = iconv(data[,6],from='UTF-8',to='GBK')
   return(data)
   
 }
@@ -34,13 +34,13 @@ getSearchByTitle <- function(keyword)
   conn <- dbConnect(MySQL(), dbname = "everydaystudy", username="zhurui", password="123456",host="127.0.0.1",port=3306)
   #strange here because encoding in database is utf8
   dbSendQuery(conn,'SET NAMES utf8')
-  sql = "select id, date,title,tag,content  from mylog  where title like '%1%' order by date desc"
+  sql = "select id, date,title,tag,count,content  from mylog  where title like '%1%' order by date desc"
   sql =str_replace(sql,'1',keyword)
   data = dbGetQuery(conn,sql)
   dbDisconnect(conn)
   data[,3] = iconv(data[,3],from='UTF-8',to='GBK')
   data[,4] = iconv(data[,4],from='UTF-8',to='GBK')
-  data[,5] = iconv(data[,5],from='UTF-8',to='GBK')
+  data[,6] = iconv(data[,6],from='UTF-8',to='GBK')
   return(data) 
 }
 
@@ -49,13 +49,13 @@ getSearchByTag <- function(keyword)
   conn <- dbConnect(MySQL(), dbname = "everydaystudy", username="zhurui", password="123456",host="127.0.0.1",port=3306)
   #strange here because encoding in database is utf8
   dbSendQuery(conn,'SET NAMES utf8')
-  sql = "select id, date,title,tag,content  from mylog  where tag like '%2%' order by date desc"
+  sql = "select id, date,title,tag,count,content  from mylog  where tag like '%2%' order by date desc"
   sql =str_replace(sql,'2',iconv(keyword,from='UTF-8',to='GBK'))
   data = dbGetQuery(conn,sql) 
   dbDisconnect(conn)
   data[,3] = iconv(data[,3],from='UTF-8',to='GBK')
   data[,4] = iconv(data[,4],from='UTF-8',to='GBK')
-  data[,5] = iconv(data[,5],from='UTF-8',to='GBK')
+  data[,6] = iconv(data[,6],from='UTF-8',to='GBK')
   return(data)
 }
 
@@ -64,13 +64,13 @@ getSearchByContent <- function(keyword)
   conn <- dbConnect(MySQL(), dbname = "everydaystudy", username="zhurui", password="123456",host="127.0.0.1",port=3306)
   #strange here because encoding in database is utf8
   dbSendQuery(conn,'SET NAMES utf8')
-  sql = "select id, date,title,tag,content  from mylog where content like '%3%' order by date desc "
+  sql = "select id, date,title,tag,count,content  from mylog where content like '%3%' order by date desc "
   sql =str_replace(sql,'3',keyword)
   data = dbGetQuery(conn,sql)
   dbDisconnect(conn)
   data[,3] = iconv(data[,3],from='UTF-8',to='GBK')
   data[,4] = iconv(data[,4],from='UTF-8',to='GBK')
-  data[,5] = iconv(data[,5],from='UTF-8',to='GBK')
+  data[,6] = iconv(data[,6],from='UTF-8',to='GBK')
   return(data)
 }
 
@@ -98,17 +98,28 @@ updateByid <- function(id,content)
   dbDisconnect(conn)
 }
 
-getUnreviewd <- function
+getUnreviewd <- function(x)
 {
   conn <- dbConnect(MySQL(), dbname = "everydaystudy", username="zhurui", password="123456",host="127.0.0.1",port=3306)
   #strange here because encoding in database is utf8
   dbSendQuery(conn,'SET NAMES utf8')
-  sql = 'select id, date,title,tag,content  from mylog order by date desc'
+  sql = 'select id, date,title,tag,count,content  from mylog where count=0 order by date desc'
   data = dbGetQuery(conn,sql)
   dbDisconnect(conn)
   data[,3] = iconv(data[,3],from='UTF-8',to='GBK')
   data[,4] = iconv(data[,4],from='UTF-8',to='GBK')
-  data[,5] = iconv(data[,5],from='UTF-8',to='GBK')
+  data[,6] = iconv(data[,6],from='UTF-8',to='GBK')
   return(data)
   
+}
+
+reviewByid <- function(id,content)
+{
+  conn <- dbConnect(MySQL(), dbname = "everydaystudy", username="zhurui", password="123456",host="127.0.0.1",port=3306)
+  dbSendQuery(conn,'SET NAMES utf8')
+  sql = " update mylog set count = count + 1 where id = param "
+  sql =str_replace(sql,'param',id)
+  rs = dbGetQuery(conn,sql)
+  print(sql)
+  dbDisconnect(conn)
 }
