@@ -22,9 +22,10 @@ getLog <- function()
   sql = 'select id, date,title,tag,count,content  from mylog order by date desc'
   data = dbGetQuery(conn,sql)
   dbDisconnect(conn)
-  data[,3] = iconv(data[,3],from='UTF-8',to='GBK')
-  data[,4] = iconv(data[,4],from='UTF-8',to='GBK')
-  data[,6] = iconv(data[,6],from='UTF-8',to='GBK')
+  #非windows系统下 不用转换
+  data[,'title'] = iconv(data[,'title'],from='UTF-8',to='GBK')
+  data[,'tag'] = iconv(data[,'tag'],from='UTF-8',to='GBK')
+  data[,'content'] = iconv(data[,'content'],from='UTF-8',to='GBK')
   return(data)
   
 }
@@ -38,9 +39,10 @@ getSearchByTitle <- function(keyword)
   sql =str_replace(sql,'1',keyword)
   data = dbGetQuery(conn,sql)
   dbDisconnect(conn)
-  data[,3] = iconv(data[,3],from='UTF-8',to='GBK')
-  data[,4] = iconv(data[,4],from='UTF-8',to='GBK')
-  data[,6] = iconv(data[,6],from='UTF-8',to='GBK')
+  #非windows系统下 不用转换
+  data[,'title'] = iconv(data[,'title'],from='UTF-8',to='GBK')
+  data[,'tag'] = iconv(data[,'tag'],from='UTF-8',to='GBK')
+  data[,'content'] = iconv(data[,'content'],from='UTF-8',to='GBK')
   return(data) 
 }
 
@@ -53,9 +55,10 @@ getSearchByTag <- function(keyword)
   sql =str_replace(sql,'2',iconv(keyword,from='UTF-8',to='GBK'))
   data = dbGetQuery(conn,sql) 
   dbDisconnect(conn)
-  data[,3] = iconv(data[,3],from='UTF-8',to='GBK')
-  data[,4] = iconv(data[,4],from='UTF-8',to='GBK')
-  data[,6] = iconv(data[,6],from='UTF-8',to='GBK')
+  #非windows系统下 不用转换
+  data[,'title'] = iconv(data[,'title'],from='UTF-8',to='GBK')
+  data[,'tag'] = iconv(data[,'tag'],from='UTF-8',to='GBK')
+  data[,'content'] = iconv(data[,'content'],from='UTF-8',to='GBK')
   return(data)
 }
 
@@ -68,9 +71,10 @@ getSearchByContent <- function(keyword)
   sql =str_replace(sql,'3',keyword)
   data = dbGetQuery(conn,sql)
   dbDisconnect(conn)
-  data[,3] = iconv(data[,3],from='UTF-8',to='GBK')
-  data[,4] = iconv(data[,4],from='UTF-8',to='GBK')
-  data[,6] = iconv(data[,6],from='UTF-8',to='GBK')
+  #非windows系统下 不用转换
+  data[,'title'] = iconv(data[,'title'],from='UTF-8',to='GBK')
+  data[,'tag'] = iconv(data[,'tag'],from='UTF-8',to='GBK')
+  data[,'content'] = iconv(data[,'content'],from='UTF-8',to='GBK')
   return(data)
 }
 
@@ -106,9 +110,10 @@ getUnreviewd <- function(x)
   sql = 'select id, date,title,tag,count,content  from mylog where count=0 order by date desc'
   data = dbGetQuery(conn,sql)
   dbDisconnect(conn)
-  data[,3] = iconv(data[,3],from='UTF-8',to='GBK')
-  data[,4] = iconv(data[,4],from='UTF-8',to='GBK')
-  data[,6] = iconv(data[,6],from='UTF-8',to='GBK')
+  #非windows系统下 不用转换
+  data[,'title'] = iconv(data[,'title'],from='UTF-8',to='GBK')
+  data[,'tag'] = iconv(data[,'tag'],from='UTF-8',to='GBK')
+  data[,'content'] = iconv(data[,'content'],from='UTF-8',to='GBK')
   return(data)
   
 }

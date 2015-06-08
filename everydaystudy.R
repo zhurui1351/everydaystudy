@@ -10,7 +10,7 @@ sourceDir <- function(path, trace = TRUE, ...) {
 }
 currentwd = getwd()
 setwd("C:/R/code/everydaystudy")
-sourceDir("helper")
+sourceDir("helper",encoding='utf-8')
 runApp("web")
 setwd(currentwd)
 

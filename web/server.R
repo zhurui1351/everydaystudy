@@ -81,5 +81,10 @@ shinyServer(function(input, output,session) {
     if(var$flag == 2)
       var$mydata = var$search(isolate(input$keyword))
   })
-  
+  output$freqByWeek <- renderPlot(
+    freqByweek()
+    )
+  output$freqByTag <- renderPlot(
+    freqByTag()
+    )
 })
