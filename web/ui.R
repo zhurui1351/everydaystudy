@@ -7,7 +7,7 @@ shinyUI(fluidPage(
       textInput("tag", label="标签", value = ""),
       br(),
       # HTML('<textarea id="content" rows="10"  value = ""></textarea>'),
-      tags$textarea(id="content", rows=15,""),
+      tags$textarea(id="content", rows=25,cols=30,""),
       br(),
       actionButton("goButton", "添加"),
       br(),
@@ -19,7 +19,7 @@ shinyUI(fluidPage(
     ),
     mainPanel(
       tabsetPanel(
-        tabPanel("知识列表",DT::dataTableOutput("titlelist"), tags$textarea(id="selected", rows=10,cols=80,textOutput("selectedcontent")),
+        tabPanel("知识列表",DT::dataTableOutput("titlelist"), tags$textarea(id="selected", rows=20,cols=120,textOutput("selectedcontent")),
                  br(),
                  actionButton("update", "更新"),
                  actionButton("delete", "删除"),actionButton("review", "复习")

@@ -17,7 +17,7 @@ shinyServer(function(input, output,session) {
   #   })
   output$titlelist = DT::renderDataTable({   
     datatable(var$mydata[,2:5], options = list(
-      pageLength = 7,searching=FALSE),
+      pageLength = 10,searching=FALSE),
       selection = c("single"), colnames=c('日期','标题','标签','复习次数')
       )
   })
