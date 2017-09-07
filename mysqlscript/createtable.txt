@@ -4,7 +4,7 @@ CREATE TABLE mylog
   title varchar(255),
   tag varchar(255),
   content text,
-  count int(11) not null default 0
+  count int(11) not null default 0,
   date datetime,
   PRIMARY KEY (id)
 ) DEFAULT CHARSET= UTF8;
