@@ -1,0 +1,59 @@
+Feature,Description,feature_map,cnDescription,dtype,category
+airconditioningtypeid, Type of cooling system present in the home (if any),aircoolingType,空调类型,id,house
+architecturalstyletypeid," Architectural style of the home (i.e. ranch, colonial, split-level, etc…)",housestyleType,建筑风格类型,id,house
+basementsqft, Finished living area below or partially below ground level,basementArea,低于地面或部分低于地面的竣工面积,float,house
+bathroomcnt, Number of bathrooms in home including fractional bathrooms,bathroomNum,浴室个数,int,house
+bedroomcnt, Number of bedrooms in home ,bedroomNum,卧室个数,int,house
+buildingqualitytypeid, Overall assessment of condition of the building from best (lowest) to worst (highest),housequalityType,建筑质量,id,house
+buildingclasstypeid,"The building framing type (steel frame, wood frame, concrete/brick) ",houseframingType,建筑框架类型,id,house
+calculatedbathnbr, Number of bathrooms in home including fractional bathroom,bathroomcalcNum,浴室个数,int,house
+decktypeid,Type of deck (if any) present on parcel,deckType,甲板类型,id,house
+threequarterbathnbr,Number of 3/4 bathrooms in house (shower + sink + toilet),bath75Num,淋雨／水槽／卫生间个数,int,house
+finishedfloor1squarefeet, Size of the finished living area on the first (entry) floor of the home,firstfloorlivingArea,一楼完工生活面积,float,house
+calculatedfinishedsquarefeet, Calculated total finished living area of the home ,livingArea,总完工生活面积,float,house
+finishedsquarefeet6,Base unfinished and finished area,baseArea,地基总面积,float,house
+finishedsquarefeet12,Finished living area,finishedLivingArea,总生活面积,float,house
+finishedsquarefeet13,Perimeter  living area,perimeterArea,周边生活面积,float,house
+finishedsquarefeet15,Total area,totalArea,总面积,float,house
+finishedsquarefeet50, Size of the finished living area on the first (entry) floor of the home,firstfloorlivingunknownArea,一楼完工生活面积,float,house
+fips, Federal Information Processing Standard code -  see https://en.wikipedia.org/wiki/FIPS_county_code for more details,fips,区域编码,id,region
+fireplacecnt, Number of fireplaces in a home (if any),fireplaceNum,壁炉个数,int,house
+fireplaceflag, Is a fireplace present in this home ,fireplaceFlag,是否有壁炉,binary,house
+fullbathcnt," Number of full bathrooms (sink, shower + bathtub, and toilet) present in home",bathNum,淋雨／水槽／卫生间／浴缸个数,int,house
+garagecarcnt, Total number of garages on the lot including an attached garage,garageNum,停车位个数,int,house
+garagetotalsqft, Total number of square feet of all garages on lot including an attached garage,garageArea,停车位面积,float,house
+hashottuborspa, Does the home have a hot tub or spa,spaFlag,是否有温泉,binary,house
+heatingorsystemtypeid, Type of home heating system,airheatingType,供暖类型,id,house
+latitude,Latitude of the middle of the parcel multiplied by 10e6,latitude,纬度,float,region
+longitude,Longitude of the middle of the parcel multiplied by 10e6,longitude,经度,float,region
+lotsizesquarefeet, Area of the lot in square feet,lotArea,,float,house
+numberofstories, Number of stories or levels the home has,floorNum,,int,house
+parcelid, Unique identifier for parcels (lots) ,parcelid,房屋id,id,primary
+poolcnt, Number of pools on the lot (if any),poolNum,泳池个数,int,house
+poolsizesum, Total square footage of all pools on property,poolArea,泳池总面积,float,house
+pooltypeid10, Spa or Hot Tub,spaType,温泉,id,house
+pooltypeid2, Pool with Spa/Hot Tub,poolwithspaType,泳池带温泉,id,house
+pooltypeid7, Pool without hot tub,poolwithoutspaType,泳池不带温泉,id,house
+propertycountylandusecode, County land use code i.e. it's zoning at the county level,landType,土地编码,text,land
+propertylandusetypeid, Type of land use the property is zoned for,landuseType,土地使用类型,id,land
+propertyzoningdesc, Description of the allowed land uses (zoning) for that property,landDesc,土地使用描述,text,land
+rawcensustractandblock, Census tract and block ID combined - also contains blockgroup assignment by extension,peoplecheckType1,未加工人口普查,id,people
+censustractandblock, Census tract and block ID combined - also contains blockgroup assignment by extension,peoplecheckType2,人口普查,id,people
+regionidcounty,County in which the property is located,county,房屋所属区域,id,region
+regionidcity, City in which the property is located (if any),city,房屋所属城市,id,region
+regionidzip, Zip code in which the property is located,zip,房屋坐落zip,id,region
+regionidneighborhood,Neighborhood in which the property is located,neighbor,房屋坐落临域,id,region
+roomcnt, Total number of rooms in the principal residence,roomNum,房间个数,int,house
+storytypeid," Type of floors in a multi-story house (i.e. basement and main level, split-level, attic, etc.).  See tab for details.",floorType,多层住宅的楼梯类型,id,house
+typeconstructiontypeid, What type of construction material was used to construct the home,materialType,建筑材料,id,house
+unitcnt,"Number of units the structure is built into (i.e. 2 = duplex, 3 = triplex, etc...)",unitNum,单元个数,int,house
+yardbuildingsqft17,Patio in  yard,patioArea,院子面积,float,house
+yardbuildingsqft26,Storage shed/building in yard,shedArea,仓库面积,float,house
+yearbuilt, The Year the principal residence was built ,buildyear,建筑年份,int,house
+taxvaluedollarcnt,The total tax assessed value of the parcel,totalassessmoney,征税评估价格,float,tax
+structuretaxvaluedollarcnt,The assessed value of the built structure on the parcel,structureassessmoney,征税建筑结构评估价格,float,tax
+landtaxvaluedollarcnt,The assessed value of the land area of the parcel,lanbassessmoney,征税建筑用地评估价格,float,tax
+taxamount,The total property tax assessed for that assessment year,propertyassessmoney,征税物业价格,float,tax
+assessmentyear,The year of the property tax assessment ,assessyear,征税年份评估,int,tax
+taxdelinquencyflag,Property taxes for this parcel are past due as of 2015,perpertyassess2015Flag,征税是否15年到期,binary,tax
+taxdelinquencyyear,Year for which the unpaid propert taxes were due ,unpaidyear,征税年份？？。。,int,tax
